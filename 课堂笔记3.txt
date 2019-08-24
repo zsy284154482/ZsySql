@@ -1,0 +1,81 @@
+                                              redis（缓存）---单线程
+看lua，php Ruby 
+买书Boost（尽量买英文）  STL（看中文）
+ppt路径：/home/zsy/Desktop/易架构/学习/后端/ppt/第一阶段
+lRU最近最少使用
+
+作业：countdownlaunch await（）做一个任务提示器
+缓存击穿:是指缓存中没有但数据库中有的数据（一般是缓存时间到期），这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力
+
+mysql读4000  写400（速度）
+备份：全量备份，差异备份，增量备份（日志备份），同步热备份（两台机器上同事做一遍相同的程序），全量冷备份（考磁盘）
+memrecache(内存)中存value只能存2M，redis的V只能存2G
+memrecache是多线程的
+游戏行业用java写用neety（比tomcat快）
+flushdb清空缓存
+exists（查）
+renamenx oldkey newkey 同上，但是如果newkey存在返回失败
+flushdb 删除当前数据库中所有key,此方法不会失败。慎用
+flushall 删除所有数据库中的所有key，此方法不会失败。更加慎用
+EXPIRE key 时间（给key设置过期时间）
+set K V存用户名 密码（要加密）
+keys *查看key
+RANDOMKEY随机出key
+rename x aaa 改名  x-->aaa
+renamenx可以检测改后的名字是否有重复
+ttl查看key的存在时间还有多少：0 nil不存在，没查到       -2已过期     -1永久存在     正数代表正常
+redis里面默认有16个库（select+数字（0-15）换库），但是这16个库都共享内存，但是能有相同的kv
+加namespace来对K做文章：比如，set mc|xxx|yyy 1
+ 		 	   set mb|xxx|ppp 1
+redis2.8.23之前key倒计时后移库，则该数据会永生。
+mget 同时获取多个key的值
+SortSet 可排序的set
+pingyin4j---将汉字翻译成拼音的jar包
+zincrby key incr member 增加对应member的score值，然后移动元素并保持skip list有序。返回更新后的score值
+getset返回该key之前的值。
+INCR 把一个数字的v加一
+DECR 把一个数字的v减一
+
+lpush mylist     //一个list rpush右插入
+lrange -1查看所有v
+redis6.0之前list无法做消息队列，因为是单线程
+
+lpush +key +值 --从头部加
+rpush +key +值 --从尾部加
+lrange +key 0 -1 --看大小
+lpop +key      --从头部删
+rpop +key      --从尾部删
+lrange key start end ---返回指定区间内元素
+
+sadd key 值 ---加值
+srem key 值 ---减值
+spop key  ---取值
+smembers key ---查看key
+sinter   ---交集
+sunion   ---并集
+sdiff    ---差集
+
+hset哈希set
+hset myhash +key +值  --添加
+hget myhash +key  --查看
+hincrby myhash ll（用户名）1  --该用户+1
+hincrby myhash ll（用户名）-1 --该用户-1
+
+zadd key l a  ---给每个元素写个分值
+zrange key 0 -1 ---正序排名
+zrevrange key 0 -1 ---倒序排名 
+zincrby key 值 元素---在某个元素的值的基础上加上多少
+
+publish 队列 值
+
+
+redis在各种语言上的应用：
+		hiredis  c语言连接用的
+		redisgo  go
+		aredis redis-py pathon用的
+		jredis java用于连接
+
+MULTI  开启事物
+notify-keyspace-events Ex,含义为：发布key时间，使用过期事件（当每一个key失效时，都会使用该事件）
+config set appendonly yes --生成日志
+在redis中输入：  slaveof ip地址 端口号  ----redis连接redis
