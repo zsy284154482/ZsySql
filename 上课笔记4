@@ -1,0 +1,35 @@
+RPC(远程调用技术)：
+SOA框架
+nginx
+单体架构-->模块化负载均衡--->服务管理RPC技术--->高密度部署原子，自治
+单体架构--->垂直架构-------->SOA架构---------->微服务架构
+阿里dubbo：RPC框架
+google：GRPC框架
+DUbbo体系:
+监控中心：AOP框架
+消费者：从注册中心获取要消费的服务名称和端口号并缓存本地，一个服务名称        
+       对应对个IP
+代码结构：
+1.rpc-common
+存储生产者，消费者公用的东西（jar包和引入依赖）
+http:
+tomcat-embed-core tomcat内嵌式。
+tomcat容器层次：
+tomcat---Server---service---Connector/Engine--host--Content
+本地注册：一个接口名----一个实现类 kv
+远程注册：放在一个map中，Map在provider的java进程里面，consumer找   
+        不到，所以在本地机器建立一个文件，将Map序列化到文件中，用到
+        时在反序列化。或者把map放在redis中。
+将接口暴露出来
+
+lettuce redis工具
+lettuce支持连接池，但很少用。
+Redisunil  async：异步操作，不阻塞当前运行状态
+用list实现Ipush   key--------list
+Java8：
+lamada表达式，对一个list，map进行遍历，对数据进行过滤，过滤后用collectors.tolist进行收集
+在lamada表达式中使用变量应该使用final修饰使其赋值一次后不可再变。
+consumer调用httpclient
+getproxy被传入接口
+启动：
+redis---server---consumer---
