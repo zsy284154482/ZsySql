@@ -1,0 +1,28 @@
+mysql> create database 库name;                                                   -- 创建数据库
+mysql> show databases;                                                           -- 显示所有的数据库
+mysql> drop database 库name;                                                      -- 删除数据库
+mysql> use 库name;                                                                -- 选择数据库
+mysql> create table 表name (字段名 varchar(20), 字段名 char(1));                    -- 创建数据表模板
+mysql> show tables;                                                               -- 显示数据表
+mysql> desc 表name；                                                               -- 显示表结构
+mysql> drop table 表name；                                                         -- 删除表
+---------------------
+mysql> select * from 表name;                                                      --显示表里的内容(查)
+mysql> insert into 表name(元素) values(元素对应的数据);                              --增加表
+mysql> delete from 表name where 元素;                                              --删除表
+mysql> update 表name set 增加的东西 where 增加的位置;                                ---改表
+mysql> select * from 表name where 限制条件;                                        --根据限制条件查内容
+mysql> select * from 表name where 给个范围 order by 要排序的列名;          --- 排序(升序：asc    降序：desc)
+mysql> selcet 列名 from 表name group by 列名;                                    ---相同的东西合并到一起
+
+
+--------------------- 
+mysqladmin -u用户名 -p旧密码 password 新密码                                         --修改密码
+select version(),current_date;                                              --显示当前mysql版本和当前日期
+PRIMARY KEY(id))ENGINE=INNODB DEFAULT CHARSET=utf8;            --每个表中都要输入这个命令（主键对，引擎，编码）
+
+
+
+cd /etc/init.d                       ----进mysql
+./mysql restart
+mysql -uroot -proot
