@@ -1,0 +1,13 @@
+public static void bubbleSort(int []arr) {
+         for(int i =0;i<arr.length-1;i++) {
+             for(int j=0;j<arr.length-i-1;j++) {  //-1为了防止溢出
+                 if(arr[j]>arr[j+1]) {  //把大的数放在后面
+                     int temp = arr[j];
+                      
+                     arr[j]=arr[j+1];
+                      
+                     arr[j+1]=temp;
+             }
+             }    
+         }
+     }
