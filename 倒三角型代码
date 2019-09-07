@@ -1,0 +1,17 @@
+public class Test {
+    public static void main(String[] args) {
+        print();
+    }
+    public static void print(){
+        int num=5;
+        for(int i=num;i>=1;i--){
+            for(int k=0;k<num-i;k++){
+                System.out.print("  ");
+            }
+            for(int j=num;j>num-i;j--){
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
